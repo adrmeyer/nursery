@@ -12,7 +12,7 @@ In order to import this project in your Eclipse IDE:
 - File > Import > Git > Projects from Git
 - Next
 - Choose Clone URI
-- put the clone URI of this repository in the URI field
+- put the clone URI of this repository in the URI field: https://github.com/dianaallam/JEEProject.git
 - put your github user and password
 - choose the master branch
 - select the existing CRUD project in the repository
