@@ -37,4 +37,10 @@ public class ReservationImpl implements ReservationDao {
 		
 		return true;
 	}
+
+	@Override
+	public List<Reservation> getByContractId(int contract_id) {
+		
+		return session.getCurrentSession().createQuery("from Reservation where contract.id ="+ String.valueOf(contract_id)).list();
+	}
 }

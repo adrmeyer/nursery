@@ -28,4 +28,9 @@ public class ReservationServiceImpl implements ReservationService {
 		return reservationDao.delete(reservation);
 	}
 
+	@Override
+	public List<Reservation> getByContractId(int contract_id) {
+		return reservationDao.getByContractId(contract_id);
+	}
+
 }

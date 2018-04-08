@@ -7,6 +7,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Users</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<style type="text/css">
+		.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
+		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+		.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
+		.tg .tg-4eph{background-color:#f9f9f9}
+	</style>
 </head>
 <body onload="load();">
  
@@ -14,8 +21,6 @@
         Name: <input type="text" id="name" required="required" name="user_name"><br>
         Email: <input type="email" id="email" required="required" name="email"><br>
         <button onclick="submit();">Submit</button>
-     
-     
  
         <table id="table" border=1>
             <tr> <th> Name </th> <th> Email </th> <th> Edit </th> <th> Delete </th> </tr>
@@ -55,7 +60,6 @@
         $("#user_id").val(data[index].user_id);
         $("#name").val(data[index].user_name);
         $("#email").val(data[index].email);
-         
     }
      
      

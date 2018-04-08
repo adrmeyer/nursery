@@ -10,4 +10,6 @@ public interface ReservationService {
 	public List<Reservation> list();
 	
 	public boolean delete(Reservation reservation);
+	
+	public List<Reservation> getByContractId(int contract_id);
 }

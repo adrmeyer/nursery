@@ -9,5 +9,10 @@
 <body>
 <h3>Bonjour</h3>
 
+<ul>
+<li><a href="users">Users</a></li>
+<li><a href="contract">Contracts</a></li>
+<li><a href="child">Children</a></li>
+</ul>
 </body>
 </html>
