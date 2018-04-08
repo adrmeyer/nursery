@@ -65,7 +65,7 @@
 
     checkAbsent_ = function(id) {
         $.ajax({
-			url:'checkAbsent',
+			url:'saveOrUpdate',
 			type:'POST',
 			data:{reservationId:id},
 			success: function(response){
@@ -84,7 +84,7 @@
                     data = response.data;
                     $('.tr').remove();
                     for(i=0; i<response.data.length; i++){                  
-                        $("#table").append("<tr class='tr'> <td> "+response.data[i].day+" </td> <td> "+response.data[i].halfDay+"</td> <td> LinkContract </td> <td> "+ response.data[i].absent +"</td><td>" + response.data[i].justification +"</td> <td> <a href="#" onclick='checkAbsent_("+response.data[i].reservationId");'> Check Absent </a> </td> <td> <a href='#' onclick='delete_("+response.data[i].user_id+");'> Delete </a>  </td> </tr>");
+                        $("#table").append("<tr class='tr'> <td> "+response.data[i].day+" </td> <td> "+response.data[i].halfDay+"</td> <td> LinkContract </td> <td> "+ response.data[i].absent +"</td><td>" + response.data[i].justification +"</td> <td> <a href='#' onclick='checkAbsent_("+response.data[i].reservationId");'> Check Absent </a> </td> <td> <a href='#' onclick='delete_("+response.data[i].user_id+");'> Delete </a>  </td> </tr>");
                     }          
             }              
         });
