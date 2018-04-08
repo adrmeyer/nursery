@@ -5,6 +5,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -26,28 +28,34 @@ public class Reservation implements java.io.Serializable {
 	private int id;
 	private Boolean absent;
 	private Boolean justification;
-
+	
+	private Contract contract;
 	private HalfDay halfDay;
 
 	public Reservation() {
 	}
 
-	public Reservation(int id, HalfDay halfDay) {
+	public Reservation(int id, HalfDay halfDay, Contract contract) {
 		this.id = id;
 		this.halfDay = halfDay;
+		this.contract = contract;
 	}
 
-	public Reservation(int id, HalfDay halfDay, Boolean absent, Boolean justification) {
+	public Reservation(int id, HalfDay halfDay, Boolean absent, Boolean justification, Contract contract) {
 		this.id = id;
 		this.halfDay = halfDay;
 		this.absent = absent;
 		this.justification = justification;
+		this.contract = contract;
 	}
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 
-	@Column(name = "id", unique = true, nullable = false)
+	@AttributeOverrides({
+			@AttributeOverride(name = "id", column = @Column(name = "id", unique = true, nullable = false)),
+			@AttributeOverride(name = "halfDayId", column = @Column(name = "half_day_id", nullable = false)),
+			@AttributeOverride(name = "contractId", column = @Column(name = "contract_id", nullable = false)) })
 	public int getId() {
 		return this.id;
 	}
@@ -82,6 +90,16 @@ public class Reservation implements java.io.Serializable {
 
 	public void setJustification(Boolean justification) {
 		this.justification = justification;
+	}
+	
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "contract_id")
+	public Contract getContract() {
+		return this.contract;
+	}
+
+	public void setContract(Contract contract) {
+		this.contract = contract;
 	}
 
 }

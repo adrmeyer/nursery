@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.daoapi.ContractDao;
 import com.entities.Contract;
 
 @Repository("ContractDao")
 @Transactional
-public class ContractImpl {
+public class ContractImpl implements ContractDao {
 
 	@Autowired
 	SessionFactory session;

@@ -2,11 +2,15 @@ package com.entities;
 // Generated 8 avr. 2018 00:43:56 by Hibernate Tools 5.2.8.Final
 
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -109,7 +113,8 @@ public class Contract implements java.io.Serializable {
 		this.legalTutorPhone = legalTutorPhone;
 	}
 
-	@Column(name = "child_id", nullable = false)
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "child_id")
 	public Child getChild() {
 		return this.child;
 	}
