@@ -25,21 +25,19 @@ public class Contract implements java.io.Serializable {
 	private int childcarePrice;
 	private String legalTutor;
 	private String legalTutorPhone;
-	private int reservationId;
 	private int childId;
 
 	public Contract() {
 	}
 
 	public Contract(String contractType, Date startingDate, Date endingDate, int childcarePrice, String legalTutor,
-			String legalTutorPhone, int reservationId, int childId) {
+			String legalTutorPhone, int childId) {
 		this.contractType = contractType;
 		this.startingDate = startingDate;
 		this.endingDate = endingDate;
 		this.childcarePrice = childcarePrice;
 		this.legalTutor = legalTutor;
 		this.legalTutorPhone = legalTutorPhone;
-		this.reservationId = reservationId;
 		this.childId = childId;
 	}
 
@@ -109,15 +107,6 @@ public class Contract implements java.io.Serializable {
 
 	public void setLegalTutorPhone(String legalTutorPhone) {
 		this.legalTutorPhone = legalTutorPhone;
-	}
-
-	@Column(name = "reservation_id", nullable = false)
-	public int getReservationId() {
-		return this.reservationId;
-	}
-
-	public void setReservationId(int reservationId) {
-		this.reservationId = reservationId;
 	}
 
 	@Column(name = "child_id", nullable = false)
