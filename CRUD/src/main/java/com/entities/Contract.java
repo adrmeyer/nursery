@@ -1,7 +1,9 @@
 package com.entities;
 // Generated 8 avr. 2018 00:43:56 by Hibernate Tools 5.2.8.Final
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -30,6 +32,8 @@ public class Contract implements java.io.Serializable {
 	private String legalTutor;
 	private String legalTutorPhone;
 	private Child child;
+	
+	private List<Reservation> reservation;
 
 	public Contract() {
 	}
@@ -43,6 +47,7 @@ public class Contract implements java.io.Serializable {
 		this.legalTutor = legalTutor;
 		this.legalTutorPhone = legalTutorPhone;
 		this.child = child;
+		this.reservation = new ArrayList<Reservation>();
 	}
 
 	@Id
@@ -130,4 +135,15 @@ public class Contract implements java.io.Serializable {
                 id, contractType, startingDate, endingDate, child.getName());
     }
 
+	public List<Reservation> getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(List<Reservation> reservation) {
+		this.reservation = reservation;
+	}
+	
+	public void addReservaton(Reservation reservation) {
+		this.reservation.add(reservation);
+	}
 }

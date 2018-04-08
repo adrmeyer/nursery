@@ -63,7 +63,7 @@
          
     }
 
-    checkAbsent_ = function(id) {
+    checkAbsent = function(id) {
         $.ajax({
 			url:'saveOrUpdate',
 			type:'POST',

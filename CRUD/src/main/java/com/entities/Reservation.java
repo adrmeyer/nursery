@@ -92,7 +92,7 @@ public class Reservation implements java.io.Serializable {
 		this.justification = justification;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "contract_id")
 	public Contract getContract() {
 		return this.contract;
