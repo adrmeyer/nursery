@@ -25,20 +25,20 @@ public class Contract implements java.io.Serializable {
 	private int childcarePrice;
 	private String legalTutor;
 	private String legalTutorPhone;
-	private int childId;
+	private Child child;
 
 	public Contract() {
 	}
 
 	public Contract(String contractType, Date startingDate, Date endingDate, int childcarePrice, String legalTutor,
-			String legalTutorPhone, int childId) {
+			String legalTutorPhone, Child child) {
 		this.contractType = contractType;
 		this.startingDate = startingDate;
 		this.endingDate = endingDate;
 		this.childcarePrice = childcarePrice;
 		this.legalTutor = legalTutor;
 		this.legalTutorPhone = legalTutorPhone;
-		this.childId = childId;
+		this.child = child;
 	}
 
 	@Id
@@ -110,12 +110,19 @@ public class Contract implements java.io.Serializable {
 	}
 
 	@Column(name = "child_id", nullable = false)
-	public int getChildId() {
-		return this.childId;
+	public Child getChild() {
+		return this.child;
 	}
 
-	public void setChildId(int childId) {
-		this.childId = childId;
+	public void setChildId(Child child) {
+		this.child = child;
 	}
+	
+	@Override
+    public String toString() {
+        return String.format(
+                "Contract[id=%d, name='%s', number of pages='%d']",
+                id, contractType, startingDate, endingDate, child.getName());
+    }
 
 }

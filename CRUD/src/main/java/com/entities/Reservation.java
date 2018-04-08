@@ -1,12 +1,16 @@
 package com.entities;
 // Generated 8 avr. 2018 00:43:56 by Hibernate Tools 5.2.8.Final
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -19,36 +23,36 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "reservation", catalog = "nursery_webapp", uniqueConstraints = @UniqueConstraint(columnNames = "id"))
 public class Reservation implements java.io.Serializable {
 
-	private ReservationId id;
-	private HalfDay halfDay;
+	private int id;
 	private Boolean absent;
 	private Boolean justification;
+
+	private HalfDay halfDay;
 
 	public Reservation() {
 	}
 
-	public Reservation(ReservationId id, HalfDay halfDay) {
+	public Reservation(int id, HalfDay halfDay) {
 		this.id = id;
 		this.halfDay = halfDay;
 	}
 
-	public Reservation(ReservationId id, HalfDay halfDay, Boolean absent, Boolean justification) {
+	public Reservation(int id, HalfDay halfDay, Boolean absent, Boolean justification) {
 		this.id = id;
 		this.halfDay = halfDay;
 		this.absent = absent;
 		this.justification = justification;
 	}
 
-	@EmbeddedId
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
-	@AttributeOverrides({
-			@AttributeOverride(name = "id", column = @Column(name = "id", unique = true, nullable = false)),
-			@AttributeOverride(name = "halfDayId", column = @Column(name = "half_day_id", nullable = false)) })
-	public ReservationId getId() {
+	@Column(name = "id", unique = true, nullable = false)
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(ReservationId id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
