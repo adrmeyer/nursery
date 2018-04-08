@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.daoapi.ContractDao;
 import com.entities.Contract;
+import com.servicesapi.ContractService;
 
-public class ContractServiceImpl {
+public class ContractServiceImpl implements ContractService {
 
     @Autowired
     ContractDao contractDao;

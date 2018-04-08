@@ -19,36 +19,40 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "reservation", catalog = "nursery_webapp", uniqueConstraints = @UniqueConstraint(columnNames = "id"))
 public class Reservation implements java.io.Serializable {
 
-	private ReservationId id;
+	private int id;
 	private HalfDay halfDay;
 	private Boolean absent;
 	private Boolean justification;
+	private int contractId;
 
 	public Reservation() {
 	}
 
-	public Reservation(ReservationId id, HalfDay halfDay) {
+	public Reservation(int id, HalfDay halfDay, int contractId) {
 		this.id = id;
 		this.halfDay = halfDay;
+		this.contractId = contractId;
 	}
 
-	public Reservation(ReservationId id, HalfDay halfDay, Boolean absent, Boolean justification) {
+	public Reservation(int id, HalfDay halfDay, Boolean absent, Boolean justification, int contractId) {
 		this.id = id;
 		this.halfDay = halfDay;
 		this.absent = absent;
 		this.justification = justification;
+		this.contractId = contractId;
 	}
 
 	@EmbeddedId
 
 	@AttributeOverrides({
 			@AttributeOverride(name = "id", column = @Column(name = "id", unique = true, nullable = false)),
-			@AttributeOverride(name = "halfDayId", column = @Column(name = "half_day_id", nullable = false)) })
-	public ReservationId getId() {
+			@AttributeOverride(name = "halfDayId", column = @Column(name = "half_day_id", nullable = false)),
+			@AttributeOverride(name = "contractId", column = @Column(name = "contract_id", nullable = false)) })
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(ReservationId id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -78,6 +82,15 @@ public class Reservation implements java.io.Serializable {
 
 	public void setJustification(Boolean justification) {
 		this.justification = justification;
+	}
+	
+	@Column(name = "contractId")
+	public int getContractId() {
+		return this.contractId;
+	}
+
+	public void setContractId(int contractId) {
+		this.contractId = contractId;
 	}
 
 }
