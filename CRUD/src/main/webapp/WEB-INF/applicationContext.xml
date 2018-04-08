@@ -23,9 +23,9 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
  
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/tests" />
+        <property name="url" value="jdbc:mysql://localhost:3306/nursery_webapp" />
         <property name="username" value="root" />
-        <property name="password" value="DianaALLAM2018" />
+        <property name="password" value="" />
     </bean>
  
     <!-- Session Factory Declaration -->
